@@ -29,6 +29,9 @@ module.exports.reply = (message) => {
         case 'addMin':
             commands.addAdmin(message);
 
+        case 'whois':
+            commands.whois(message);
+
         default:
             break;
     }
@@ -38,5 +41,6 @@ var commands = {
     hug: require('./commands/hug'),
     kiss: require('./commands/kiss'),
     addPic: require('./commands/addPic'),
-    addAdmin: require('./commands/addAdmin')
+    addAdmin: require('./commands/addAdmin'),
+    whois: require('./commands/whois')
 }
