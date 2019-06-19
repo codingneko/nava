@@ -1,0 +1,24 @@
+{
+  "name": "nava",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingneko/nava.git"
+  },
+  "author": "CodingNeko and Rawrneru",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/codingneko/nava/issues"
+  },
+  "homepage": "https://github.com/codingneko/nava#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.0.0"
+  }
+}
