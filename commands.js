@@ -29,9 +29,15 @@ module.exports.reply = (message) => {
         
         case 'addMin':
             commands.addAdmin(message);
+            break;
 
         case 'whois':
             commands.whois(message);
+            break;
+        
+        case 'slot':
+            commands.slot(message);
+            break;
 
         default:
             break;
@@ -43,5 +49,6 @@ var commands = {
     kiss: require('./commands/kiss'),
     addPic: require('./commands/addPic'),
     addAdmin: require('./commands/addAdmin'),
-    whois: require('./commands/whois')
+    whois: require('./commands/whois'),
+    slot: require('./commands/slot')
 }
