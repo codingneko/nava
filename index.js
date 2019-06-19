@@ -18,7 +18,6 @@ client.on('ready', message => {
 //Message listener (triggers when a message is received)
 client.on('message', message => {
     if(message.content[0] == process.env.PREFIX){
-        message.content = message.content.slice(1, message.content.length);
         commands.reply(message);
     }
 });

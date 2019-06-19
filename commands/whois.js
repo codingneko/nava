@@ -3,7 +3,8 @@ const { RichEmbed } = require('./loadGeneralDependencies');
 module.exports = (message) => {
     let now = new Date();
     let roleList = [];
-    let memberRole = message.author.lastMessage.member.roles;
+    let user = message.mentions.users.array().length > 0 ? message.mentions.users.first() : message.author;
+    let memberRole = message.guild.member(user).roles;
 
     let randomColor = () => {
         let letters = '0123456789abcdef';
@@ -19,17 +20,17 @@ module.exports = (message) => {
     });
 
     let embed = new RichEmbed()
-    .setColor(0x00AE86)
+    .setColor(randomColor())
     .setAuthor('User info')
-    .addField('Name', message.author.username, true)
-    .addField('Nickname', message.author.lastMessage.member.nickname, true)
-    .addField('Discriminator', message.author.discriminator, true)
-    .addField('User ID', message.author.id, true)
-    .addField('Last message received', message.author.lastMessage.content, true)
-    .addField('Joined', message.author.lastMessage.member.joinedAt.toUTCString(), true)
+    .addField('Name', user.username, true)
+    .addField('Nickname', message.guild.member(user).nickname, true)
+    .addField('Discriminator', user.discriminator, true)
+    .addField('User ID', user.id, true)
+    .addField('Joined', message.guild.member(user).joinedAt.toUTCString(), true)
     .addField('Roles', roleList, true)
-    .setThumbnail(message.author.avatarURL)
-    .setFooter(`maware - ${now.toUTCString()}`)
+    .addField('Last message', message.guild.member(user).lastMessage, true)
+    .setThumbnail(user.avatarURL)
+    .setFooter(`Nava - ${now.toUTCString()}`)
 
     message.channel.send(embed);
 }

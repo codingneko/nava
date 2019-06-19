@@ -10,7 +10,8 @@ db.defaults({
 }).write();
 
 module.exports.reply = (message) => {
-    switch (message.content.split(' ')[0]) {
+    let command = message.content.slice(1, message.content.length);
+    switch (command.split(' ')[0]) {
         case 'ping':
             message.reply('pong');
             break;
