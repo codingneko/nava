@@ -17,6 +17,6 @@ var commands = {
     hug: (message) => {
         let mentions = message.mentions.users;
         let reply = `Aww <@${message.author.id}> hugged <@${message.mentions.users.first().id}> :heart:`;
-        message.channel.sendMessage(reply);
+        message.channel.send(reply);
     }
 }
