@@ -1,3 +1,14 @@
+const {RichEmbed} = require('discord.js');
+const lowdb = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+const adapter = new FileSync('db/bot.json');
+const db = lowdb(adapter);
+
+db.defaults({
+    images: [],
+    admins: []
+}).write();
+
 module.exports.reply = (message) => {
     switch (message.content.split(' ')[0]) {
         case 'ping':
@@ -8,15 +19,24 @@ module.exports.reply = (message) => {
             commands.hug(message);
             break;
         
+        case 'kiss':
+            commands.kiss(message);
+            break;
+        case 'addPic':
+            commands.addPic(message);
+            break;
+        
+        case 'addMin':
+            commands.addAdmin(message);
+
         default:
             break;
     }
 }
 
 var commands = {
-    hug: (message) => {
-        let mentions = message.mentions.users;
-        let reply = `Aww <@${message.author.id}> hugged <@${message.mentions.users.first().id}> :heart:`;
-        message.channel.send(reply);
-    }
+    hug: require('./commands/hug'),
+    kiss: require('./commands/kiss'),
+    addPic: require('./commands/addPic'),
+    addAdmin: require('./commands/addAdmin')
 }
