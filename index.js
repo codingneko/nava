@@ -3,6 +3,9 @@ var Discord = require('discord.js');
 var client = new Discord.Client();
 const utility = require('./utility');
 const commands = require('./commands');
+const { usersdb } = require('./commands/loadGeneralDependencies');
+// pointMessageLimit so that we're not calling the db every single message, just a little stopgap
+var coinsMessageLimit = 0;
 
 
 //Ready listener (triggers when the bot is connected)
@@ -19,6 +22,18 @@ client.on('ready', message => {
 client.on('message', message => {
     if(message.content[0] == process.env.PREFIX){
         commands.reply(message);
+    }
+
+    // A small little coin system for use in commands that can cost, etc
+    let userId = usersdb.get('users').find({ id: message.author.id }).value();
+    if (userId === undefined) {
+        usersdb.get('users').push({ id: message.author.id, tokens: 0 }).write();
+    } else {
+        coinsMessageLimit++;
+        if (coinsMessageLimit >= 5) {
+            usersdb.get('users').find({ id: userId.id }).assign({ coins: userId.coins + 1 }).write();
+            coinsMessageLimit = 0;
+        }
     }
 });
 
