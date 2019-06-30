@@ -39,6 +39,10 @@ module.exports.reply = (message) => {
             commands.slot(message);
             break;
 
+        case 'osu':
+            commands.osu(message);
+            break;
+
         default:
             break;
     }
@@ -50,5 +54,6 @@ var commands = {
     addPic: require('./commands/addPic'),
     addAdmin: require('./commands/addAdmin'),
     whois: require('./commands/whois'),
-    slot: require('./commands/slot')
+    slot: require('./commands/slot'),
+    osu: require('./commands/osu')
 }
