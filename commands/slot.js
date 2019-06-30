@@ -25,8 +25,8 @@ module.exports = (message) => {
     embed
     .addField(
         'Slots',
-        `${slotMachine[0][0]} ${slotMachine[0][1]} ${slotMachine[0][2]}\n
-        ${slotMachine[1][0]} ${slotMachine[1][1]} ${slotMachine[1][2]} ⬅\n
+        `${slotMachine[0][0]} ${slotMachine[0][1]} ${slotMachine[0][2]}
+        ${slotMachine[1][0]} ${slotMachine[1][1]} ${slotMachine[1][2]} ⬅
         ${slotMachine[2][0]} ${slotMachine[2][1]} ${slotMachine[2][2]}`
         )
         .addField((status ? 'You won!' : 'You lost..'), (status ? 'Nice job!' : 'Better luck next time..'));
