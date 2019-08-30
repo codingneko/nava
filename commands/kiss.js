@@ -7,8 +7,11 @@ module.exports = (message) => {
         let generatedImage = images[Math.floor(Math.random() * images.length)];
         embed.setImage(`${generatedImage.url}`);
     }
+
+    let mentioned;
+    if (message.mentions.users.first()) mentioned = message.mentions.users.first().id;
     embed.setTitle('Kiss sent!');
-    embed.setDescription(`Aww :heart: <@${message.author.id}> kissed <@${message.mentions.users.first().id}>`);
+    embed.setDescription(`Aww :heart: <@${message.author.id}> kissed <@${mentioned}>`);
     embed.setColor(0xFF77AA);
     message.channel.send(embed);
 }

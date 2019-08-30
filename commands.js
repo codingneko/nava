@@ -43,6 +43,10 @@ module.exports.reply = (message) => {
             commands.osu(message);
             break;
 
+        case 'match':
+            commands.match(message);
+            break;
+
         default:
             break;
     }
@@ -55,5 +59,6 @@ var commands = {
     addAdmin: require('./commands/addAdmin'),
     whois: require('./commands/whois'),
     slot: require('./commands/slot'),
-    osu: require('./commands/osu')
+    osu: require('./commands/osu'),
+    match: require('./commands/match')
 }
